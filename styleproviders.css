@@ -1,0 +1,105 @@
+body {
+  font-family: Arial;
+  color: white;
+}
+
+.leftpane {
+
+    width: 33.33%;
+    height: 100%;
+    float: left;*/
+   
+}
+
+/* add new provider  */
+/* labels + button*/
+.add{
+  color: white;
+  padding: 15px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 20px;
+  left: 150px;
+}
+
+.addid{
+  color: white;
+  padding: 10px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 130px;
+  left: 30px;
+}
+.addname{
+  color: white;
+  padding: 10px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 170px;
+  left: 30px;
+}
+.addphone{
+ color: white;
+  padding: 10px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 210px;
+  left: 30px;
+}
+.addaddress{
+  color: white;
+  padding: 10px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 250px;
+  left: 30px;
+}
+.badd{
+
+	border-radius: 8px;
+	font-size: 20px;
+	color:  #fff;
+	background-color: #006400;
+	padding:  5px;
+  position: absolute;
+  top: 290px;
+  left: 200px;
+}
+
+/*insert data - add new provider*/
+
+.iddd{
+  color: white;
+  padding: 0px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 140px;
+  left: 100px;
+}
+
+.namee{
+  color: white;
+  padding: 0px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 180px;
+  left: 130px;
+}
+.phonee{
+ color: white;
+  padding: 0px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 220px;
+  left: 230px;
+}
+.addresss{
+  color: white;
+  padding: 0px;
+  background-color: #fff; color: black;
+  position: absolute;
+  top: 260px;
+  left: 180px;
+}
+
+
