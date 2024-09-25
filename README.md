@@ -1,87 +1,109 @@
-# Cosmetics Factory
+# Cosmetics Factory Management System
 
-This project is a dynamic web application built using **PHP** and **CSS** for a user-friendly interface. The application allows users to log in, interact with the database, manage options, and view provider information. The visual elements of the interface are styled using the **styletable.css** file.
+This project is a **Cosmetics Factory Management System** built using **PHP**, **MySQL**, and **CSS**. It manages various aspects of the factory including employee logins, provider information, stock management, and customer orders.
 
 ## Features
 
-- **Login System**: Users can log in securely, and their credentials are processed through `login.php` and `processlogin.php`.
-- **Options Management**: The application allows users to manage settings and options, which are processed through `options.php` and `processoptions.php`.
-- **Provider Information**: Users can view and interact with provider data via `providers.php` and `processproviders.php`.
-- **Database Interaction**: Data is retrieved and updated in the database via `database.php`.
-- **Data Display**: Information from the database is displayed dynamically using `display.php`.
-- **Styled Tables**: The project features stylish tables with alternating row colors and customized headers and footers, all handled by the `styletable.css` file.
+### PHP (Web Interface):
+- **Login System**: Employees can log in securely using the `login.php` form.
+- **Provider Management**: Allows employees to add and manage provider information (handled via `providers.php` and `processproviders.php`).
+- **Dynamic Options**: Options page (`options.php`) for employees to manage various settings within the system.
+- **Database Interaction**: All data is stored and managed through the **MySQL** database, including provider information, employee credentials, and cosmetics stock.
+
+### C (Backend Operations):
+- **Stock Management**: Manages the cosmetics stock, including medicines, quantities, and pricing. Clients can select products based on prescription or quantity.
+- **Cart System**: The `cart.c` file manages customer carts, allowing them to add products and calculate totals.
+- **Customer Orders**: Customers can place orders for various cosmetics items, with options for quick purchases or prescription-based orders.
+- **Courier Scheduling**: Customers can select delivery schedules using the `courier()` function, with real-time scheduling and feedback.
 
 ## Project Structure
 
 ### PHP Files
 
-- **`login.php`**: Handles the login form where users input their credentials.
-- **`processlogin.php`**: Processes the user login, verifies credentials, and starts the session.
-- **`options.php`**: Displays various options for the user to select or modify.
-- **`processoptions.php`**: Processes the selected options and updates the database accordingly.
-- **`providers.php`**: Displays a list of providers.
-- **`processproviders.php`**: Handles interactions related to providers (e.g., adding or updating provider information).
-- **`database.php`**: Manages database connectivity and queries.
-- **`display.php`**: Retrieves and displays data from the database in a table format.
+- **`login.php`**: Handles user login input and form submission.
+- **`processlogin.php`**: Processes the user’s credentials and grants access if successful. If the login fails, an error message is shown.
+- **`providers.php`**: Displays a form to add new providers, including their ID, name, phone number, and address.
+- **`processproviders.php`**: Inserts provider information into the **MySQL** database when submitted from the `providers.php` form.
+- **`options.php`**: Displays various options for employees to manage (redirects depending on the selected action).
+- **`database.php`**: Manages database connections for the PHP application, connecting to the `cosmetics_factory` database.
 
-### CSS File
+### C Files
 
-- **`styletable.css`**: Handles the styling of tables and the general appearance of the application. Some key styling features include:
-  - Alternating row colors in tables (`odd` and `even` rows styled differently).
-  - Custom backgrounds for the page, table headers, and footers.
-  - Caption styling with unique fonts and positioning.
-  - Table formatting with specific margins, widths, and color schemes.
+- **`main.c`**: Main entry point for the program. It manages client interactions, handles the reading of cosmetics stock from a file, and provides the user interface.
+- **`cart.c`**: Manages the shopping cart system for customers. Handles adding products, calculating totals, and displaying cart contents.
+- **`medicine.c`**: Includes functions for managing stock, searching for products, and validating orders based on prescription status.
+- **`client.c`**: Manages client interactions, including capturing customer details, selecting delivery options, and managing customer orders.
+- **`pharmacy.c`**: Handles the general operations of the pharmacy stock and integrates with the cart system.
 
-### Text File
+### Other Files
 
-- **`pharmacy_stock.txt`**: Contains data related to pharmacy stock, used by the PHP application to display and manage inventory.
+- **`pharmacy_stock.txt`**: A text file containing the current stock of cosmetics products, including medicine names, quantities, prices, and whether a prescription is required.
 
 ## How It Works
 
-1. **Login**: The user navigates to the login page (`login.php`) and inputs their credentials. The credentials are processed in `processlogin.php` and, if valid, the session is started.
-2. **Options**: The user can select and modify settings on the `options.php` page. The selected options are then processed by `processoptions.php`.
-3. **Provider Information**: Users can view a list of providers on `providers.php`, and any updates or additions are processed by `processproviders.php`.
-4. **Data Display**: Information from the database is dynamically displayed using `display.php`, which organizes the data into tables styled by `styletable.css`.
+### PHP Side (Web Interface):
+1. **Login**: Employees log in through `login.php`, and credentials are verified using `processlogin.php`.
+2. **Provider Management**: Employees can add new providers via the form in `providers.php`. The information is processed and saved to the database by `processproviders.php`.
+3. **Options**: Employees can navigate to the `options.php` page to perform various administrative tasks.
+4. **Database Connection**: `database.php` handles the connection to the `cosmetics_factory` database.
+
+### C Side (Backend):
+1. **Stock Management**: Cosmetics stock is managed through functions in `medicine.c` and read from `pharmacy_stock.txt`.
+2. **Customer Interaction**: Clients can add items to their cart using the **quick list** or **prescription-based** method. Stock is checked, and the client is informed if a prescription is required.
+3. **Order Processing**: The system processes orders, calculates totals, and manages stock updates.
+4. **Courier Scheduling**: Customers can schedule deliveries through the `courier()` function, selecting a preferred delivery day.
 
 ## Installation
 
-1. **Clone the repository**:
+### PHP Application:
+1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/php-web-app.git
-    cd php-web-app
+    git clone https://github.com/yourusername/cosmetics-factory-system.git
+    cd cosmetics-factory-system
     ```
 
-2. **Set up the Database**:
-    - Create a MySQL database and configure the connection in `database.php` with your database credentials.
+2. **Set Up Database**:
+    - Create a MySQL database named `cosmetics_factory`.
+    - Import the SQL schema (if available) to create the necessary tables.
+    - Update `database.php` with your database credentials.
 
 3. **Run the Application**:
-    - Host the PHP files on a local or cloud-based server (e.g., XAMPP, MAMP, or a cloud provider).
-    - Access the login page via your web browser and begin using the application.
+    - Host the PHP files on a local server (e.g., **XAMPP** or **MAMP**) or deploy them to a cloud service.
+    - Access the login page via a browser at `http://localhost/login.php`.
 
-## Example Table Styling
+### C Application:
+1. **Compile the C Files**:
+    ```bash
+    gcc main.c cart.c client.c medicine.c pharmacy.c -o cosmetics_factory
+    ```
 
-The application makes use of customized table styles from `styletable.css`. Here’s a breakdown of the key table styling:
+2. **Run the Program**:
+    ```bash
+    ./cosmetics_factory
+    ```
 
-- **Alternating Row Colors**: 
-  - Odd rows are styled with a background color of `#8FBC8F`.
-  - Even rows are styled with a background color of `#F0E68C`.
+## File Example
 
-- **Table Header and Footer**:
-  - The header and footer are styled with a custom background image (`leopardskin.jpg`) and a white font color with black text shadow for readability.
-  
-- **Table Layout**: 
-  - The table width is set to `45%`, with padding of `5px` and background color `#006400`.
+### `pharmacy_stock.txt`
+This file contains the stock data.
 
-- **Caption Styling**:
-  - Captions are styled with a `Rock Salt` font, italics, and positioned at the bottom of the table with right-aligned text.
+Each entry contains:
+- **ID**: Unique identifier for the product.
+- **Name**: Product name.
+- **Miligrams**: Dosage or weight of the product.
+- **Quantity**: Number of units in stock.
+- **Price**: Price per unit.
+- **Prescription**: Whether the product requires a prescription (`YES`/`NO`).
 
 ## Customization
 
-- **Table Backgrounds**: You can change the background image in the `thead` and `tfoot` sections by modifying the `background` property in `styletable.css`.
-- **Font Styling**: The table caption uses the `'Rock Salt'` font and italic styling. You can change this by editing the `caption` section in the CSS file.
+- **Database Credentials**: Update the `database.php` file with your MySQL database credentials.
+- **Stock File**: Modify the `pharmacy_stock.txt` file to include your own cosmetics inventory.
+- **Courier Schedule**: The delivery schedule in `client.c` can be updated with different days or times.
 
 
 ## Acknowledgments
 
-- **PHP**: For providing the backend functionality for this web application.
-- **CSS**: For styling the user interface, enhancing user experience.
+- **Authors**: Muresan Emma Simina, Sucala Paula Ilinca.
+- **Institution**: Technical University of Cluj-Napoca.
+
