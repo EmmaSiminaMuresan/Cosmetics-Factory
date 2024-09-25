@@ -104,6 +104,5 @@ Each entry contains:
 
 ## Acknowledgments
 
-- **Authors**: Muresan Emma Simina, Sucala Paula Ilinca.
 - **Institution**: Technical University of Cluj-Napoca.
 
